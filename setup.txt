@@ -1,0 +1,42 @@
+# Download and extract Kafka
+wget https://downloads.apache.org/kafka/3.5.1/kafka_2.12-3.5.1.tgz
+tar -xvf kafka_2.12-3.3.1.tgz
+
+# Check Java version, install if necessary
+java -version
+sudo yum install java 
+
+# Change to Kafka directory
+cd kafka_2.12-3.5.1
+
+# Start ZooKeeper
+# Open another terminal window or SSH into your EC2 instance if not already connected
+bin/zookeeper-server-start.sh config/zookeeper.properties
+
+# Start Kafka server
+# Open another terminal window or SSH into your EC2 instance if not already connected
+# Duplicate the session to enter a new console
+export KAFKA_HEAP_OPTS="-Xmx256M -Xms128M"
+bin/kafka-server-start.sh config/server.properties
+
+# Make Kafka accessible via public IP
+# There are two approaches to achieve this:
+# Option 1: Edit server.properties
+# Run the following command to edit the server.properties file
+# sudo nano config/server.properties
+# Change the "advertised.listeners" to the public IP of your EC2 instance
+
+# Create a Kafka topic
+# Open another terminal window or SSH into your EC2 instance if not already connected
+# Duplicate the session to enter a new console
+cd kafka_2.12-3.5.1
+bin/kafka-topics.sh --create --topic demo_testing2 --bootstrap-server {Put the Public IP of your EC2 Instance:9092} --replication-factor 1 --partitions 1
+
+# Start a Kafka producer
+bin/kafka-console-producer.sh --topic demo_testing2 --bootstrap-server {Put the Public IP of your EC2 Instance:9092}
+
+# Start a Kafka consumer
+# Open another terminal window or SSH into your EC2 instance if not already connected
+# Duplicate the session to enter a new console
+cd kafka_2.12-3.5.1
+bin/kafka-console-consumer.sh --topic demo_testing2 --bootstrap-server {Put the Public IP of your EC2 Instance:9092}
