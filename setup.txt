@@ -30,13 +30,13 @@ bin/kafka-server-start.sh config/server.properties
 # Open another terminal window or SSH into your EC2 instance if not already connected
 # Duplicate the session to enter a new console
 cd kafka_2.12-3.5.1
-bin/kafka-topics.sh --create --topic demo_testing2 --bootstrap-server {Put the Public IP of your EC2 Instance:9092} --replication-factor 1 --partitions 1
+bin/kafka-topics.sh --create --topic testTopic --bootstrap-server {Put the Public IP of your EC2 Instance:9092} --replication-factor 1 --partitions 1
 
 # Start a Kafka producer
-bin/kafka-console-producer.sh --topic demo_testing2 --bootstrap-server {Put the Public IP of your EC2 Instance:9092}
+bin/kafka-console-producer.sh --topic testTopic --bootstrap-server {Put the Public IP of your EC2 Instance:9092}
 
 # Start a Kafka consumer
 # Open another terminal window or SSH into your EC2 instance if not already connected
 # Duplicate the session to enter a new console
 cd kafka_2.12-3.5.1
-bin/kafka-console-consumer.sh --topic demo_testing2 --bootstrap-server {Put the Public IP of your EC2 Instance:9092}
+bin/kafka-console-consumer.sh --topic testTopic --bootstrap-server {Put the Public IP of your EC2 Instance:9092}
