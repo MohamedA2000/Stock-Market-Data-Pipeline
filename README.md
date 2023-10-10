@@ -1,7 +1,6 @@
 # End-to-End Data Pipeline with Apache Kafka and AWS
 
-This repository contains the code and configuration files for an end-to-end data pipeline built using Apache Kafka, ZooKeeper, and various AWS services. The pipeline is designed to ingest, process, store, and analyze stock market data in real-time. Below is an overview of the components and steps involved in this data pipeline.
-
+This repository contains the code and configuration files for an end-to-end data pipeline built using Apache Kafka, ZooKeeper, and a suite of AWS services. The pipeline is designed to ingest, process, store, and analyze streaming data in real-time. It leverages Amazon S3 for scalable and durable storage of raw data, utilizes AWS Glue for automated data discovery, metadata cataloging, and ETL transformations, and employs Amazon Athena for real-time ad-hoc querying and analysis. The entire system is hosted on an AWS EC2 instance, providing the computational infrastructure for data processing.
 ## Components
 
 ### Apache Kafka and ZooKeeper
